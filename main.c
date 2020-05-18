@@ -7,13 +7,14 @@
  */
 int main(int argc, char *argv[])
 {
-	FILE* file_open;
+	FILE *file_open;
 	char str[60];
+
 	if (argc != 2)
-        {
-                dprintf(STDERR_FILENO, "USAGE: monty file\n");
-                exit(EXIT_FAILURE);
-        }
+	{
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
 	file_open = fopen(argv[1], "r");
 
