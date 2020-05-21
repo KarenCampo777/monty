@@ -1,4 +1,5 @@
 #include "monty.h"
+stack_h stacker = {NULL, NULL, NULL};
 /**
  * main- Function that checks code
  * @argc: Number of arguments
@@ -8,7 +9,8 @@
 int main(int argc, char *argv[])
 {
 	FILE *file_open;
-	char str[60];
+	size_t len = 0;
+	unsigned int counter = 1;
 
 	if (argc != 2)
 	{
@@ -23,10 +25,14 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	fgets(str, 60, file_open);
-	printf("string is: %s\n", str);
-
+	while (getline(&(stacker.str), &len, file_open) != -1)
+	{
+		printf("string is: %s\n", stacker.str);
+		the_excec(counter);
+		counter++;
+	}
 	fclose(file_open);
+	free(stacker.str);
 
 	/**read_file(argv[2];*/
 	return (EXIT_SUCCESS);
