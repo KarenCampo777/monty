@@ -36,9 +36,22 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ * stack_handler - to handle stack 
+ * @str: pointer
+ * @num: pointer
+*/
+typedef struct stack_handler
+{
+	char *str;
+	char *num;
+	stack_t *opera;
+}stack_h;
+
+extern stack_h stacker;
 
 /** functions here*/
-void (*the_opcode(char *opcode, stack_t**, unsigned int));
+void (*the_opcode(char *opcode, unsigned int));
 
 
 

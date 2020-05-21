@@ -23,18 +23,19 @@ void (*the_opcode(char *opcode, stack_t**, unsigned int))
 		{"pstr", pstr},
 		{"rotl", rotl},
 		{"rotr", rotr},
-		{NULL, NULL}};
+		{NULL, NULL}
+	};
 
 
-int i = 0;
-while (opi[i].f != NULL)
+
+	int i = 0;
+	while (opi[i].f != NULL)
 	{	
-	if (strcmp(opcode, opi[i].opcode) == 0)
+		if (strcmp(opcode, opi[i].opcode) == 0)
 		return (opi[i].f);
-	i++;
+		i++;
 	}	
-dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", opcode)
-free_all();
-exit(EXIT_FAILURE);
-
+	dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", opcode)
+	free_all();
+	exit(EXIT_FAILURE);
 }		
